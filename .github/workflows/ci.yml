@@ -20,6 +20,7 @@ jobs:
               repo: context.repo.repo,
               body: '👋 testing commenting, changesss'
             })
+      - uses: actions/checkout@v2
       - name: Upload image
         id: upload-image-0
         uses: McCzarny/upload-image@v1.0.0
