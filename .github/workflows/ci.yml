@@ -4,7 +4,7 @@ on:
   push:
     tags:
     branches:
-      - 'master'
+      - 'main'
 jobs:
   screenshot:
     runs-on: windows-latest
@@ -23,14 +23,14 @@ jobs:
       - name: Upload image
         id: upload-image-0
         uses: McCzarny/upload-image@v1.0.0
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request_target'
         with:
           path: images/0.png
           uploadMethod: imgbb
           apiKey: '${{ secrets.IMGBB_API_KEY }}'
       - name: 'Comment PR with image'
         uses: actions/github-script@0.3.0
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request_target'
         with:
           github-token: ${{ secrets.TOKEN_GITHUB }}
           script: |
