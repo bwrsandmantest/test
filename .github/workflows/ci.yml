@@ -21,6 +21,9 @@ jobs:
               body: '👋 testing commenting, changesss'
             })
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
       - run: |
           git log --graph | cat
       - name: Upload image
