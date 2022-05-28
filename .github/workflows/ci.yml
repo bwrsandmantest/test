@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: 'Comment PR'
         uses: actions/github-script@v6
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request_target'
         with:
           script: |
             github.rest.issues.createComment({
