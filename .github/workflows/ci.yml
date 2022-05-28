@@ -9,6 +9,17 @@ jobs:
   screenshot:
     runs-on: windows-latest
     steps:
+      - name: 'Comment PR'
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 testing commenting, from fork'
+            })
       - name: Upload image
         id: upload-image-0
         uses: McCzarny/upload-image@v1.0.0
@@ -17,7 +28,7 @@ jobs:
           path: images/0.png
           uploadMethod: imgbb
           apiKey: '${{ secrets.IMGBB_API_KEY }}'
-      - name: 'Comment PR'
+      - name: 'Comment PR with image'
         uses: actions/github-script@0.3.0
         if: github.event_name == 'pull_request'
         with:
