@@ -7,7 +7,7 @@ on:
       - 'master'
 jobs:
   screenshot:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Upload image
         id: upload-image-0
