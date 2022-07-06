@@ -1,1 +1,2 @@
 echo BUILDING
+env
