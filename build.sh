@@ -1,2 +1,3 @@
 echo BUILDING
 env
+more $GITHUB_EVENT_PATH
